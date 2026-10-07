@@ -1,0 +1,59 @@
+# Single source of truth for the pipeline. Thresholds here are *governance* decisions:
+# change them via pull request + clinical sign-off, not ad hoc.
+project:
+  experiment_name: heart-disease-risk
+  registered_model_name: heart-disease-risk-model
+
+data:
+  n_samples: 20000
+  seed: 42
+  path: data/raw/patients.csv
+
+features:
+  numeric: [age, resting_bp, cholesterol, fasting_glucose, max_heart_rate, bmi, st_depression]
+  binary:  [smoker, diabetes, family_history, exercise_angina]
+  categorical: [sex, chest_pain_type]
+target: heart_disease
+# Used ONLY for auditing. Never fed to the model.
+audit_attributes: [race_ethnicity, sex, age_band]
+primary_audit_attribute: race_ethnicity
+# Gate policy per attribute.
+#  full             = equal-opportunity + calibration + min-group-AUC must pass (attributes that should NOT change care)
+#  calibration_only = only calibration + min-group-AUC gate; TPR gaps are reported but not blocking
+#                     (age legitimately drives risk, so unequal flag rates are expected -- but scores must stay honest)
+fairness_gate_policy:
+  race_ethnicity: full
+  sex: full
+  age_band: calibration_only
+
+split:               # temporal split on admission_date (no leakage from the future)
+  train: 0.70
+  valid: 0.15
+  test: 0.15
+
+training:
+  cv_folds: 5
+  selection_metric: roc_auc
+  target_sensitivity: 0.85       # operating threshold ("high risk")
+  safe_sensitivity: 0.95         # below this score => low risk / routine
+
+gates:                # model must pass ALL to be promoted
+  min_auc: 0.78
+  max_ece: 0.05
+  min_group_size: 150
+  min_group_auc: 0.72
+  max_equal_opportunity_gap: 0.12   # max TPR difference across groups
+  max_calibration_gap: 0.05         # |mean predicted - observed| per group
+  max_champion_auc_regression: 0.01
+
+human_in_the_loop:
+  auto_clear_audit_rate: 0.05       # % of low-risk cases randomly sent to clinician anyway
+  review_sla_hours: 24
+
+monitoring:
+  psi_warn: 0.10
+  psi_alert: 0.25
+  min_labeled_for_performance: 200
+  auc_drop_alert: 0.05
+  sensitivity_drop_alert: 0.08
+  max_override_rate: 0.30            # clinicians overriding model >30% => investigate

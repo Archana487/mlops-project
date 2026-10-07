@@ -1,0 +1,231 @@
+{
+  "race_ethnicity": {
+    "table": [
+      {
+        "group": "Group A",
+        "n": 1649,
+        "prevalence": 0.1941,
+        "selection_rate": 0.4227,
+        "tpr": 0.8438,
+        "fpr": 0.3213,
+        "ppv": 0.3874,
+        "auc": 0.85,
+        "mean_pred": 0.1907,
+        "calibration_gap": -0.0033
+      },
+      {
+        "group": "Group B",
+        "n": 635,
+        "prevalence": 0.1953,
+        "selection_rate": 0.411,
+        "tpr": 0.8065,
+        "fpr": 0.3151,
+        "ppv": 0.3831,
+        "auc": 0.8335,
+        "mean_pred": 0.184,
+        "calibration_gap": -0.0113
+      },
+      {
+        "group": "Group C",
+        "n": 433,
+        "prevalence": 0.1686,
+        "selection_rate": 0.4273,
+        "tpr": 0.8356,
+        "fpr": 0.3444,
+        "ppv": 0.3297,
+        "auc": 0.819,
+        "mean_pred": 0.1983,
+        "calibration_gap": 0.0297
+      },
+      {
+        "group": "Group D",
+        "n": 283,
+        "prevalence": 0.2191,
+        "selection_rate": 0.4664,
+        "tpr": 0.9032,
+        "fpr": 0.3439,
+        "ppv": 0.4242,
+        "auc": 0.8748,
+        "mean_pred": 0.2105,
+        "calibration_gap": -0.0086
+      }
+    ],
+    "summary": {
+      "demographic_parity_gap": 0.05540747335911633,
+      "equal_opportunity_gap": 0.09677419354838712,
+      "equalized_odds_gap": 0.09677419354838712,
+      "auc_gap": 0.055809915205303984,
+      "max_abs_calibration_gap": 0.029745910560272842,
+      "min_group_auc": 0.8190258751902587,
+      "worst_tpr_group": "Group B",
+      "groups_too_small_to_assess": []
+    },
+    "passed": true,
+    "failures": []
+  },
+  "sex": {
+    "table": [
+      {
+        "group": "F",
+        "n": 1495,
+        "prevalence": 0.1625,
+        "selection_rate": 0.3472,
+        "tpr": 0.8025,
+        "fpr": 0.2588,
+        "ppv": 0.3757,
+        "auc": 0.84,
+        "mean_pred": 0.156,
+        "calibration_gap": -0.0065
+      },
+      {
+        "group": "M",
+        "n": 1505,
+        "prevalence": 0.2233,
+        "selection_rate": 0.5023,
+        "tpr": 0.869,
+        "fpr": 0.3969,
+        "ppv": 0.3862,
+        "auc": 0.8446,
+        "mean_pred": 0.2282,
+        "calibration_gap": 0.005
+      }
+    ],
+    "summary": {
+      "demographic_parity_gap": 0.15516839075989736,
+      "equal_opportunity_gap": 0.06657848324514992,
+      "equalized_odds_gap": 0.1381345023326237,
+      "auc_gap": 0.0045517112418033134,
+      "max_abs_calibration_gap": 0.006509686979684848,
+      "min_group_auc": 0.840032080358669,
+      "worst_tpr_group": "F",
+      "groups_too_small_to_assess": []
+    },
+    "passed": true,
+    "failures": []
+  },
+  "age_band": {
+    "table": [
+      {
+        "group": "45-59",
+        "n": 1286,
+        "prevalence": 0.1361,
+        "selection_rate": 0.3266,
+        "tpr": 0.7429,
+        "fpr": 0.261,
+        "ppv": 0.3095,
+        "auc": 0.8144,
+        "mean_pred": 0.1424,
+        "calibration_gap": 0.0063
+      },
+      {
+        "group": "60-74",
+        "n": 806,
+        "prevalence": 0.3164,
+        "selection_rate": 0.7519,
+        "tpr": 0.9098,
+        "fpr": 0.6788,
+        "ppv": 0.3828,
+        "auc": 0.7639,
+        "mean_pred": 0.3071,
+        "calibration_gap": -0.0093
+      },
+      {
+        "group": "75+",
+        "n": 197,
+        "prevalence": 0.5431,
+        "selection_rate": 0.9797,
+        "tpr": 0.9907,
+        "fpr": 0.9667,
+        "ppv": 0.5492,
+        "auc": 0.7411,
+        "mean_pred": 0.5482,
+        "calibration_gap": 0.005
+      },
+      {
+        "group": "<45",
+        "n": 711,
+        "prevalence": 0.0591,
+        "selection_rate": 0.0788,
+        "tpr": 0.4524,
+        "fpr": 0.0553,
+        "ppv": 0.3393,
+        "auc": 0.7761,
+        "mean_pred": 0.0536,
+        "calibration_gap": -0.0055
+      }
+    ],
+    "summary": {
+      "demographic_parity_gap": 0.9009331248616734,
+      "equal_opportunity_gap": 0.5382732532265242,
+      "equalized_odds_gap": 0.9113602391629297,
+      "auc_gap": 0.07326451470247142,
+      "max_abs_calibration_gap": 0.009275194780488605,
+      "min_group_auc": 0.7411214953271028,
+      "worst_tpr_group": "<45",
+      "groups_too_small_to_assess": []
+    },
+    "passed": true,
+    "failures": []
+  },
+  "oracle_race_ethnicity": {
+    "table": [
+      {
+        "group": "Group A",
+        "n": 1649,
+        "prevalence": 0.1941,
+        "selection_rate": 0.4227,
+        "tpr": 0.8438,
+        "fpr": 0.3213,
+        "ppv": 0.3874,
+        "auc": 0.85,
+        "mean_pred": 0.1907,
+        "calibration_gap": -0.0033
+      },
+      {
+        "group": "Group B",
+        "n": 635,
+        "prevalence": 0.1953,
+        "selection_rate": 0.411,
+        "tpr": 0.8065,
+        "fpr": 0.3151,
+        "ppv": 0.3831,
+        "auc": 0.8335,
+        "mean_pred": 0.184,
+        "calibration_gap": -0.0113
+      },
+      {
+        "group": "Group C",
+        "n": 433,
+        "prevalence": 0.2079,
+        "selection_rate": 0.4273,
+        "tpr": 0.8333,
+        "fpr": 0.3207,
+        "ppv": 0.4054,
+        "auc": 0.8295,
+        "mean_pred": 0.1983,
+        "calibration_gap": -0.0095
+      },
+      {
+        "group": "Group D",
+        "n": 283,
+        "prevalence": 0.2191,
+        "selection_rate": 0.4664,
+        "tpr": 0.9032,
+        "fpr": 0.3439,
+        "ppv": 0.4242,
+        "auc": 0.8748,
+        "mean_pred": 0.2105,
+        "calibration_gap": -0.0086
+      }
+    ],
+    "summary": {
+      "demographic_parity_gap": 0.05540747335911633,
+      "equal_opportunity_gap": 0.09677419354838712,
+      "equalized_odds_gap": 0.09677419354838712,
+      "auc_gap": 0.045324938435731155,
+      "max_abs_calibration_gap": 0.0113208258345312,
+      "min_group_auc": 0.8295108519598315,
+      "worst_tpr_group": "Group B"
+    }
+  }
+}

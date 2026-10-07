@@ -1,0 +1,45 @@
+<!doctype html><meta charset=utf-8><title>Monitoring</title>
+<body style="font:14px system-ui;max-width:860px;margin:2rem auto">
+<h1>Model monitoring &mdash; <span style="color:#cf222e">ALERT</span></h1>
+<p>Model <b>202610070714-a4403b</b> &middot; 2026-10-07T07:23:23+00:00 &middot; 800 predictions</p>
+<p><b>Recommendation:</b> Investigate drift in: cholesterol, bmi. Consider retraining on recent data.</p>
+<h2>Feature drift (PSI: &lt;0.1 ok, 0.1-0.25 warn, &gt;0.25 alert)</h2>
+<table border=1 cellpadding=6 style="border-collapse:collapse"><tr><th>feature<th>PSI<th>status</tr><tr><td>age</td><td>0.1851</td><td style='color:#9a6700;font-weight:600'>warn</td></tr><tr><td>resting_bp</td><td>0.0553</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>cholesterol</td><td>0.0272</td><td style='color:#cf222e;font-weight:600'>alert</td></tr><tr><td>fasting_glucose</td><td>0.0319</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>max_heart_rate</td><td>0.0589</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>bmi</td><td>0.4589</td><td style='color:#cf222e;font-weight:600'>alert</td></tr><tr><td>st_depression</td><td>0.0099</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>smoker</td><td>0.0005</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>diabetes</td><td>0.0182</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>family_history</td><td>0.0001</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>exercise_angina</td><td>0.0015</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>sex</td><td>0.0</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>chest_pain_type</td><td>0.0029</td><td style='color:#1a7f37;font-weight:600'>ok</td></tr><tr><td>score</td><td>0.1684</td><td style='color:#9a6700;font-weight:600'>warn</td></tr></table>
+<h2>Performance (delayed labels)</h2><pre>{
+ &quot;n_labeled&quot;: 800,
+ &quot;auc&quot;: 0.8513,
+ &quot;sensitivity&quot;: 0.9583,
+ &quot;ece&quot;: 0.0925,
+ &quot;baseline_auc&quot;: 0.8444,
+ &quot;baseline_sensitivity&quot;: 0.8411,
+ &quot;alerts&quot;: [],
+ &quot;status&quot;: &quot;ok&quot;,
+ &quot;fairness&quot;: {
+  &quot;demographic_parity_gap&quot;: 0.10004490345756623,
+  &quot;equal_opportunity_gap&quot;: 0.09090909090909094,
+  &quot;equalized_odds_gap&quot;: 0.1085958005249344,
+  &quot;auc_gap&quot;: 0.10394241028619278,
+  &quot;max_abs_calibration_gap&quot;: 0.10471052165738196,
+  &quot;min_group_auc&quot;: 0.8017179670722978,
+  &quot;worst_tpr_group&quot;: &quot;Group B&quot;
+ }
+}</pre>
+<h2>Human-in-the-loop</h2><pre>{
+ &quot;n_predictions&quot;: 800,
+ &quot;n_requiring_review&quot;: 690,
+ &quot;n_reviewed&quot;: 616,
+ &quot;backlog&quot;: 74,
+ &quot;tier_mix&quot;: {
+  &quot;high&quot;: 0.596,
+  &quot;moderate&quot;: 0.215,
+  &quot;low&quot;: 0.189
+ },
+ &quot;override_rate&quot;: 0.07,
+ &quot;decision_mix&quot;: {
+  &quot;confirm&quot;: 0.93,
+  &quot;override_lower&quot;: 0.068,
+  &quot;override_higher&quot;: 0.002
+ },
+ &quot;median_review_hours&quot;: 0.031,
+ &quot;status&quot;: &quot;ok&quot;
+}</pre></body>

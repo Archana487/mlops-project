@@ -1,0 +1,23 @@
+services:
+  trainer:            # one-shot: builds the champion model into the shared volume
+    build: .
+    command: python -m prp.flows train
+    volumes: [data:/data]
+  api:
+    build: .
+    depends_on: { trainer: { condition: service_completed_successfully } }
+    ports: ["8000:8000"]
+    environment: [PRP_REVIEWER_KEY=${PRP_REVIEWER_KEY:?set a real key}]
+    volumes: [data:/data]
+  scheduler:          # weekly retrain (gated) + daily monitoring
+    build: .
+    command: python -m prp.flows serve
+    depends_on: { trainer: { condition: service_completed_successfully } }
+    volumes: [data:/data]
+  mlflow:
+    build: .
+    command: mlflow ui --host 0.0.0.0 --backend-store-uri sqlite:////data/artifacts/mlflow.db
+    ports: ["5000:5000"]
+    depends_on: { trainer: { condition: service_completed_successfully } }
+    volumes: [data:/data]
+volumes: { data: {} }
